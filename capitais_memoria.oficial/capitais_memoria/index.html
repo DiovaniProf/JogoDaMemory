@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capitais - Jogo da Memória</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="tag">Tema educacional</p>
+      <h1>Capitais do Brasil</h1>
+      <p class="subtitle">
+        Encontre o par correto entre o estado e sua capital.
+      </p>
+    </section>
+
+    <section class="panel" aria-label="Painel do jogo">
+      <div class="score-card">
+        <span>Tentativas</span>
+        <strong id="attempts">0</strong>
+      </div>
+
+      <div class="score-card">
+        <span>Pares</span>
+        <strong><span id="matches">0</span>/<span id="totalPairs">0</span></strong>
+      </div>
+
+      <button id="restartBtn" class="restart" type="button">Reiniciar</button>
+    </section>
+
+    <p id="message" class="message" aria-live="polite">
+      Clique em duas cartas para formar os pares.
+    </p>
+
+    <section id="gameBoard" class="game-board" aria-label="Cartas do jogo da memória"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
