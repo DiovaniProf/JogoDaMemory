@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, rgba(0, 229, 255, 0.25), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(0, 255, 136, 0.18), transparent 35%),
+                linear-gradient(135deg, #050b14, #0b1f3a, #06111f);
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* TELA INICIAL */
+.tela-inicial {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.caixa-inicial {
+    max-width: 720px;
+    text-align: center;
+    padding: 50px 40px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    box-shadow: 0 0 45px rgba(0, 229, 255, 0.18);
+    backdrop-filter: blur(12px);
+}
+
+.caixa-inicial h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff, #00e5ff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.caixa-inicial h2 {
+    font-size: 1.5rem;
+    color: #00ffcc;
+    margin-bottom: 25px;
+}
+
+.caixa-inicial p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #d6e6ff;
+    margin-bottom: 35px;
+}
+
+/* BOTÕES */
+button {
+    border: none;
+    padding: 14px 26px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #00e5ff, #00ff88);
+    color: #06111f;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 24px rgba(0, 229, 255, 0.7);
+}
+
+/* TELA DO JOGO */
+.tela-jogo {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 0 60px;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(0, 229, 255, 0.22);
+}
+
+.topo h1 {
+    color: #00e5ff;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.topo p {
+    color: #d6e6ff;
+}
+
+.painel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.painel span {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* TABULEIRO */
+.tabuleiro {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+/* CARTAS */
+.carta {
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.conteudo-carta {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.65s ease;
+}
+
+.carta.virada .conteudo-carta,
+.carta.encontrada .conteudo-carta {
+    transform: rotateY(180deg);
+}
+
+.face {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* FRENTE DA CARTA (Substitui o "?" pelo contorno em Néon) */
+.frente {
+    background: #07182d;
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    overflow: hidden;
+}
+
+/* Grafismo do Contorno do Brasil em Azul Néon */
+.mapa-brasil {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mapa-brasil path {
+    fill: none;
+    stroke: #00e5ff;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 5px #00e5ff) drop-shadow(0 0 12px #00a2ff);
+}
+
+/* VERSO DA CARTA (Revelada - Texto Limpo e Legível) */
+.verso {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #ffffff, #eafaff); 
+    color: #06111f;
+    border: 2px solid #00e5ff;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.verso .tipo {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #008fa3;
+    font-weight: bold;
+}
+
+.verso .texto {
+    font-weight: bold;
+    font-size: 1.15rem;
+    word-break: break-word;
+}
+
+/* ESTILO QUANDO O PAR CORRETO É ENCONTRADO */
+.carta.encontrada .verso {
+    border-color: #00ff88;
+    background: linear-gradient(135deg, #e6ffee, #bfffda);
+}
+
+/* MENSAGEM DE VITÓRIA */
+.mensagem-vitoria {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 8, 18, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    z-index: 10;
+}
+
+.caixa-vitoria {
+    max-width: 500px;
+    text-align: center;
+    padding: 45px 35px;
+    border-radius: 28px;
+    background: #07182d;
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    box-shadow: 0 0 50px rgba(0, 229, 255, 0.25);
+}
+
+.caixa-vitoria h2 {
+    font-size: 2.8rem;
+    color: #00ffcc;
+    margin-bottom: 20px;
+}
+
+.caixa-vitoria p {
+    color: #d6e6ff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.oculto {
+    display: none;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 850px) {
+    .topo {
+        flex-direction: column;
+        text-align: center;
+    }
+    .painel {
+        flex-direction: column;
+    }
+    .tabuleiro {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .carta {
+        height: 135px;
+    }
+}
+
+@media (max-width: 560px) {
+    .tabuleiro {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .carta {
+        height: 125px;
+    }
+    .caixa-inicial {
+        padding: 40px 25px;
+    }
+    .caixa-inicial h1 {
+        font-size: 2.2rem;
+    }
+    .topo h1 {
+        font-size: 1.6rem;
+    }
+}

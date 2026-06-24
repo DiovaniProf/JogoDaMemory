@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Memória | Estados e Capitais</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main class="container">
+        <section id="telaInicial" class="tela-inicial">
+            <div class="caixa-inicial">
+                <h1>Jogo da Memória</h1>
+                <h2>Estados e Capitais Brasileiras</h2>
+                <p>
+                    Treina a tua memória e conhecimentos de geografia! 
+                    Encontra os pares combinando cada Estado à sua respetiva Capital.
+                </p>
+                <button id="btnIniciar">Iniciar Jogo</button>
+            </div>
+        </section>
+
+        <section id="telaJogo" class="tela-jogo oculto">
+            <header class="topo">
+                <div>
+                    <h1>Estados & Capitais</h1>
+                    <p>Combina o Estado com a Capital correta</p>
+                </div>
+                <div class="painel">
+                    <span>Tentativas: <strong id="tentativas">0</strong></span>
+                    <button id="btnReiniciar">Reiniciar</button>
+                </div>
+            </header>
+            
+            <section id="tabuleiro" class="tabuleiro"></section>
+
+            <div id="mensagemVitoria" class="mensagem-vitoria oculto">
+                <div class="caixa-vitoria">
+                    <h2>Parabéns!</h2>
+                    <p>Dominaste a geografia do Brasil e encontraste todos os pares!</p>
+                    <p>Total de tentativas: <strong id="resultadoTentativas">0</strong></p>
+                    <button id="btnJogarNovamente">Jogar novamente</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
